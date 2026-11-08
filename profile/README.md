@@ -21,18 +21,18 @@ paved road that is also the secure road.
 
 ## Repositories
 
-| Repository                                                                            | What it is                                                                             |
-| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [`meta`](https://github.com/homelab-selfuryon/meta)                                   | Documentation: how the org fits together, delivery flow, decisions, security baseline. |
-| [`.github`](https://github.com/homelab-selfuryon/.github)                             | This profile, community health files, the shared Renovate preset.                      |
-| [`platform-terraform`](https://github.com/homelab-selfuryon/platform-terraform)       | OpenTofu for the GitHub org and OpenBao configuration.                                 |
-| [`github-workflows`](https://github.com/homelab-selfuryon/github-workflows)           | Reusable workflows: build, sign, render, publish, promote.                             |
-| [`platform-kit`](https://github.com/homelab-selfuryon/platform-kit)                   | The paved road: CUE `#Service` module and Nix lib for Rust services.                   |
-| [`platform-components`](https://github.com/homelab-selfuryon/platform-components)     | Clusters and platform components in CUE, released as signed OCI artifacts.             |
-| [`gitops`](https://github.com/homelab-selfuryon/gitops)                               | What runs where: digests per cluster and environment.                                  |
-| [`rust-service-template`](https://github.com/homelab-selfuryon/rust-service-template) | Template for a new Rust service.                                                       |
-| [`notes-api`](https://github.com/homelab-selfuryon/notes-api)                         | Example service: notes REST API on Postgres.                                           |
-| [`notes-stats`](https://github.com/homelab-selfuryon/notes-stats)                     | Example service: calls `notes-api` with a projected ServiceAccount token.              |
+| Repository                                                                        | What it is                                                                             |
+| --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| [`meta`](https://github.com/homelab-selfuryon/meta)                               | Documentation: how the org fits together, delivery flow, decisions, security baseline. |
+| [`.github`](https://github.com/homelab-selfuryon/.github)                         | This profile, community health files, the shared Renovate preset.                      |
+| [`platform-terraform`](https://github.com/homelab-selfuryon/platform-terraform)   | OpenTofu for the GitHub org and OpenBao configuration.                                 |
+| [`github-workflows`](https://github.com/homelab-selfuryon/github-workflows)       | Reusable workflows: build, sign, render, publish, promote.                             |
+| [`platform-kit`](https://github.com/homelab-selfuryon/platform-kit)               | The paved road: CUE `#App` module and devenv module for Rust apps.                     |
+| [`platform-components`](https://github.com/homelab-selfuryon/platform-components) | Clusters and platform components in CUE, released as signed OCI artifacts.             |
+| [`gitops`](https://github.com/homelab-selfuryon/gitops)                           | What runs where: digests per cluster and environment.                                  |
+| [`rust-app-template`](https://github.com/homelab-selfuryon/rust-app-template)     | Template for a new Rust app.                                                           |
+| [`notes-api`](https://github.com/homelab-selfuryon/notes-api)                     | Example app: notes REST API on Postgres.                                               |
+| [`notes-stats`](https://github.com/homelab-selfuryon/notes-stats)                 | Example app: calls `notes-api` with a projected ServiceAccount token.                  |
 
 ## Contributing
 
