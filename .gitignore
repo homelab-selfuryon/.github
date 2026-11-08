@@ -1,0 +1,8 @@
+.direnv/
+result
+.claude/settings.local.json
+.claude/worktrees/
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+.pre-commit-config.yaml

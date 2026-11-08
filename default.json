@@ -1,0 +1,99 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Shared Renovate preset for the homelab-selfuryon org. Use as: local>homelab-selfuryon/.github",
+  "extends": ["config:best-practices"],
+  "minimumReleaseAge": "3 days",
+  "minimumReleaseAgeBehaviour": "timestamp-optional",
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps",
+  "dependencyDashboard": true,
+  "labels": ["renovate"],
+  "prHourlyLimit": 6,
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "minimumReleaseAge": null,
+    "labels": ["renovate", "security"],
+    "prCreation": "immediate",
+    "description": "Security fixes skip the minimumReleaseAge soak and the hourly limit."
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["before 6am on monday"],
+    "commitMessageAction": "refresh",
+    "commitMessageTopic": "lock files",
+    "description": "Weekly refresh of Cargo.lock (no Nix flakes in the org)."
+  },
+  "customManagers": [
+    {
+      "description": "CUE module dependencies on org modules: \"github.com/homelab-selfuryon/<repo>@v0\": { v: \"vX.Y.Z\" } in cue.mod/module.cue.",
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)cue\\.mod/module\\.cue$/"],
+      "matchStrings": [
+        "\"github\\.com/(?<depName>homelab-selfuryon/[^@\"]+)@v\\d+\":\\s*\\{[^}]*?\\bv:\\s*\"(?<currentValue>v[^\"]+)\""
+      ],
+      "datasourceTemplate": "github-tags"
+    },
+    {
+      "description": "Component versions in platform-components registry/latest.json. Each entry names its Renovate datasource and package; helm entries also carry the repository URL.",
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)registry/latest\\.json$/"],
+      "matchStrings": [
+        "\"datasource\":\\s*\"(?<datasource>[^\"]+)\",\\s*\"package\":\\s*\"(?<depName>[^\"]+)\",(?:\\s*\"registry\":\\s*\"(?<registryUrl>[^\"]+)\",)?\\s*\"version\":\\s*\"(?<currentValue>[^\"]+)\""
+      ]
+    },
+    {
+      "customType": "regex",
+      "description": "devenv version used by the reusable workflows (DEVENV_VERSION: vX.Y.Z)",
+      "managerFilePatterns": ["/^\\.github/workflows/[^/]+\\.ya?ml$/"],
+      "matchStrings": [
+        "DEVENV_VERSION:\\s*(?<currentValue>v\\d+\\.\\d+\\.\\d+)"
+      ],
+      "depNameTemplate": "cachix/devenv",
+      "datasourceTemplate": "github-releases"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Pin every GitHub Action and reusable workflow (including the org's github-workflows) to a commit SHA.",
+      "matchManagers": ["github-actions"],
+      "pinDigests": true
+    },
+    {
+      "description": "Automerge minor, patch, pin and digest updates once the required checks are green; majors wait for a human.",
+      "matchUpdateTypes": ["minor", "patch", "pin", "pinDigest", "digest"],
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "description": "0.x versions treat a minor bump as breaking: no automerge.",
+      "matchCurrentVersion": "/^v?0\\./",
+      "matchUpdateTypes": ["minor"],
+      "automerge": false
+    },
+    {
+      "description": "Group the org's own reusable workflow bumps so a release of github-workflows lands as one PR.",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["homelab-selfuryon/github-workflows"],
+      "groupName": "github-workflows"
+    },
+    {
+      "description": "Container base images (Containerfile/Dockerfile) are pinned by digest; digest-only updates automerge, version bumps follow the general rules.",
+      "matchDatasources": ["docker"],
+      "matchManagers": ["dockerfile"],
+      "pinDigests": true
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchManagers": ["dockerfile"],
+      "matchUpdateTypes": ["digest", "pin", "pinDigest"],
+      "automerge": true,
+      "platformAutomerge": true
+    }
+  ],
+  "dockerfile": {
+    "managerFilePatterns": ["/(^|/)(Docker|Container)file(\\.[^/]*)?$/"]
+  }
+}
