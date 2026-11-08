@@ -53,6 +53,15 @@
       ],
       "depNameTemplate": "cachix/devenv",
       "datasourceTemplate": "github-releases"
+    },
+    {
+      "description": "Org devenv modules: `url: github:homelab-selfuryon/<repo>/vX.Y.Z` inputs in devenv.yaml.",
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)devenv\\.yaml$/"],
+      "matchStrings": [
+        "url:\\s*[\"']?github:(?<depName>homelab-selfuryon/[^/\\s\"']+)/(?<currentValue>v\\d[^\\s\"',}]*)"
+      ],
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
