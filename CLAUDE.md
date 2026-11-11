@@ -10,7 +10,7 @@ repository without its own copy.
   `.github/ISSUE_TEMPLATE/` — default community health files (inherited by repos that lack their own).
 - `default.json` — the shared Renovate preset, used as `local>homelab-selfuryon/.github`. Repositories
   extend it from their `.github/renovate.json` and add only repo-specific rules. It holds the custom regex
-  managers for `cue.mod/module.cue` deps and `registry/latest.json`.
+  managers for `cue.mod/module.cue` deps, devenv inputs and `DEVENV_VERSION`.
 - `.github/workflows/ci.yaml` — validates the preset, actionlint, zizmor; job `final-check` is the
   required check.
 
