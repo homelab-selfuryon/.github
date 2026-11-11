@@ -32,6 +32,10 @@ Read the repository's `README.md` and `CLAUDE.md` for its build and test command
 4. A code owner (see `.github/CODEOWNERS`) reviews the change. History stays linear.
 5. Do not commit secrets, credentials or real hostnames, IPs or e-mail addresses. Use placeholders
    such as `homelab.example` and `192.0.2.0/24`.
+6. Write pull request descriptions, issues and comments without line breaks inside a paragraph:
+   GitHub renders every newline there as a line break. One line per paragraph or list item, a blank
+   line between paragraphs. (Markdown files in a repository may stay wrapped: GitHub joins their
+   lines.)
 
 ## Workflows and dependencies
 
