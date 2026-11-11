@@ -32,8 +32,8 @@ Custom managers:
 
 - `cue.mod/module.cue`: `"github.com/homelab-selfuryon/<repo>@v0": { v: "vX.Y.Z" }` is looked up in the
   GitHub tags of `homelab-selfuryon/<repo>`.
-- `registry/latest.json` (in `platform-components`): entries of the form
-  `name`, `datasource`, `package`, optional `registry`, `version`.
+- `registry/latest.json` is not here: `platform-components` declares its manager itself (it also
+  captures the OCI digest; a second manager without it made Renovate try to pin and fail).
 
 Note: the preset is referenced with `local>`, so the Renovate app needs access to this repository.
 The workflows and CUE modules of the org are public, so no extra credentials are involved.

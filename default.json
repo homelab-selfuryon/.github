@@ -37,14 +37,6 @@
       "datasourceTemplate": "github-tags"
     },
     {
-      "description": "Component versions in platform-components registry/latest.json. Each entry names its Renovate datasource and package; helm entries also carry the repository URL.",
-      "customType": "regex",
-      "managerFilePatterns": ["/(^|/)registry/latest\\.json$/"],
-      "matchStrings": [
-        "\"datasource\":\\s*\"(?<datasource>[^\"]+)\",\\s*\"package\":\\s*\"(?<depName>[^\"]+)\",(?:\\s*\"registry\":\\s*\"(?<registryUrl>[^\"]+)\",)?\\s*\"version\":\\s*\"(?<currentValue>[^\"]+)\""
-      ]
-    },
-    {
       "customType": "regex",
       "description": "devenv version used by the reusable workflows (DEVENV_VERSION: vX.Y.Z)",
       "managerFilePatterns": ["/^\\.github/workflows/[^/]+\\.ya?ml$/"],
