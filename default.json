@@ -81,6 +81,12 @@
       "groupName": "github-workflows"
     },
     {
+      "description": "Rust, as one PR: rust-toolchain.toml and the Containerfile build stage (rust:<version>-slim-...) must name the same version (platform-kit's devenv test checks it). devenv takes the toolchain from rust-overlay, pinned in devenv.lock, which the weekly devenv update (Monday 06:00 UTC) refreshes; proposed after that run only, so the version (3 days old, see minimumReleaseAge) is already in the lock. Until the lock PR is merged, the branch is rebased and CI re-runs.",
+      "matchPackageNames": ["rust"],
+      "groupName": "rust",
+      "schedule": ["* 9-23 * * 1"]
+    },
+    {
       "description": "Container base images (Containerfile/Dockerfile) are pinned by digest; digest-only updates automerge, version bumps follow the general rules.",
       "matchDatasources": ["docker"],
       "matchManagers": ["dockerfile"],
