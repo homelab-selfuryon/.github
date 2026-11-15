@@ -26,9 +26,9 @@ The preset: starts from `config:best-practices`; pins GitHub Actions and reusabl
 automerges minor, patch and digest updates once required checks pass (0.x minors are treated as
 breaking and wait for a person); waits 3 days after a release (`minimumReleaseAge`) except for
 security fixes; raises OSV vulnerability alerts; refreshes `Cargo.lock` weekly; proposes Rust
-toolchain bumps on Mondays after 09:00 UTC only, after the weekly `devenv update` that brings the
-version into `devenv.lock` (rust-overlay);
-uses Conventional Commit messages (`chore(deps): ...`).
+(`rust-toolchain.toml` and the Containerfile build image together, as one PR) on Mondays after
+09:00 UTC only, after the weekly `devenv update` that brings the version into `devenv.lock`
+(rust-overlay); uses Conventional Commit messages (`chore(deps): ...`).
 
 Custom managers:
 
