@@ -58,6 +58,11 @@
   ],
   "packageRules": [
     {
+      "description": "The org's own packages (platform-kit, github-workflows, CUE modules) are our releases: no minimumReleaseAge soak, the PR comes right away.",
+      "matchPackageNames": ["homelab-selfuryon/**"],
+      "minimumReleaseAge": null
+    },
+    {
       "description": "Pin every GitHub Action and reusable workflow (including the org's github-workflows) to a commit SHA.",
       "matchManagers": ["github-actions"],
       "pinDigests": true
