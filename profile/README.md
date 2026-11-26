@@ -18,6 +18,7 @@ paved road that is also the secure road.
 - Flux applies the platform, Argo CD syncs tenant apps, neither holds a long-lived credential.
 - Secrets are files from OpenBao, authenticated by the pod's own ServiceAccount.
 - GitHub settings and OpenBao policy are code, reviewed like any other change.
+- Teams and apps are declared once, in a catalog; onboarding is one pull request.
 
 ## Repositories
 
@@ -25,6 +26,7 @@ paved road that is also the secure road.
 | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | [`meta`](https://github.com/homelab-selfuryon/meta)                               | Documentation: how the org fits together, delivery flow, decisions, security baseline. |
 | [`.github`](https://github.com/homelab-selfuryon/.github)                         | This profile, community health files, the shared Renovate preset.                      |
+| [`catalog`](https://github.com/homelab-selfuryon/catalog)                         | Teams and apps declared once; each repository that needs them gets its view as a PR.   |
 | [`platform-terraform`](https://github.com/homelab-selfuryon/platform-terraform)   | OpenTofu for the GitHub org and OpenBao configuration.                                 |
 | [`github-workflows`](https://github.com/homelab-selfuryon/github-workflows)       | Reusable workflows: build, sign, render, publish, promote.                             |
 | [`platform-kit`](https://github.com/homelab-selfuryon/platform-kit)               | The paved road: CUE `#App` module and devenv module for Rust apps.                     |

@@ -28,7 +28,9 @@ breaking and wait for a person); waits 3 days after a release (`minimumReleaseAg
 security fixes; raises OSV vulnerability alerts; refreshes `Cargo.lock` weekly; proposes Rust
 (`rust-toolchain.toml` and the Containerfile build image together, as one PR) on Mondays after
 09:00 UTC only, after the weekly `devenv update` that brings the version into `devenv.lock`
-(rust-overlay); uses Conventional Commit messages (`chore(deps): ...`).
+(rust-overlay); uses Conventional Commit messages (`chore(deps): ...`). App repositories add one rule
+of their own: `platform-kit` updates are `fix(deps)`, so release-please releases them (the render of
+what the app deploys changes; `chore` releases nothing).
 
 Custom managers:
 
